@@ -1,0 +1,37 @@
+.scroll{
+	overflow: scroll;
+	height: 450px;
+	width: 300px;
+	padding: 10px;
+	border: 2px solid green;
+	display: inline-block;
+	float: left;
+	text-align: left;
+}
+
+.sidebaritem{
+	background-color: brown;
+	color: white;
+	margin: 5px 0px;
+	cursor: pointer;
+}
+
+.sidebaritem:hover{
+	background-color: red;
+	box-shadow: 3px 3px 5px grey;
+}
+
+.content{
+	border: 2px solid gold;
+	padding: 15px;
+	font-weight: bold;
+}
+
+h4{
+	text-align: left;
+	text-transform: uppercase;
+}
+
+p{
+	text-align: left;
+}
