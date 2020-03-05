@@ -26,7 +26,7 @@ class Messages extends Component{
 
 	render(){
 		const MessageList = this.state.messages.map((message, id) => {
-			return <MessageItem id={id} onClick={() => this.readMessage(id)} isClicked={message}/>
+			return <MessageItem key={id} id={id} onClick={() => this.readMessage(id)} isClicked={message}/>
 		});
 
 		return(

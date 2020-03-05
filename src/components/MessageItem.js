@@ -3,7 +3,7 @@ import './MessageItem.css';
 
 const MessageItem = ({ id, onClick, isClicked }) => {
 	return(
-		<h3 onClick={onClick} className={isClicked?'clicked':'notc'}>Message {id+1}</h3>
+		<h3 onClick={onClick} key={id} className={isClicked?'clicked':'notc'}>Message {id+1}</h3>
 	);
 };
 
