@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import 'tachyons';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      isLoggedIn: false
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick = () => {
+    this.setState(state => ({
+      isLoggedIn: !state.isLoggedIn
+    }));
+  }
+
+  render(){
+    const { isLoggedIn } = this.state;
+    return isLoggedIn?
+    (
+      <div className='tc'>
+        <h1>Yay, you are logged in!</h1>
+        <button
+          onClick={this.handleClick}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Logout
+        </button>
+      </div>
+    ):
+    (
+      <div className='tc'>
+        <h1>Nooo, you are logged out!</h1>
+        <button
+          onClick={this.handleClick}
+        >
+          Login
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
