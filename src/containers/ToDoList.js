@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import 'tachyons';
 import AddItem from '../components/AddItem';
-import ItemList from '../components/ItemList';
 import '../components/blog.css';
+import Basic from '../components/Basic';
 
 class ToDoList extends Component{
 	constructor(){
@@ -12,10 +12,12 @@ class ToDoList extends Component{
 			toDoItems: [],
 			counter: 0,
 			doneItems: 0,
-			pendingItems: 0
+			pendingItems: 0,
+			selectedFruit: 'Apple'
 		}
 		this.handleChange = this.handleChange.bind(this);
 		this.addItem = this.addItem.bind(this);
+		this.handleSelectChange = this.handleSelectChange.bind(this);
 	}
 
 	addItem = (event) => {
@@ -27,6 +29,10 @@ class ToDoList extends Component{
 
 	handleChange = (event) => {
 		this.setState({ newItem: event.target.value.toUpperCase() });
+	}
+
+	handleSelectChange = (event) => {
+		this.setState({ selectedFruit: event.target.value });
 	}
 
 	toggleItem = (item) => {
@@ -42,7 +48,7 @@ class ToDoList extends Component{
 	}
 
 	render(){
-		const { newItem, toDoItems } = this.state;
+		const { newItem, toDoItems, selectedFruit } = this.state;
 		const itemList = toDoItems.map(item => {
 			return(
 				<li
@@ -58,12 +64,14 @@ class ToDoList extends Component{
 
 		return(
 			<div className='tc'>
-				<AddItem value={newItem} handleChange={this.handleChange} addItem={this.addItem}/>
-				<p>Pending Items: {this.state.pendingItems}</p>
-				<p>Done Items: {this.state.doneItems}</p>
+				<AddItem value={newItem} handleChange={this.handleChange} addItem={this.addItem} selectedFruit={selectedFruit} handleSelectChange={this.handleSelectChange} />
+				<p className='tc'>Pending Items: {this.state.pendingItems}</p>
+				<p className='tc'>Done Items: {this.state.doneItems}</p>
+				<p className='tc'>selectedFruit: {this.state.selectedFruit}</p>
 				<ul>
 					{itemList}
 				</ul>
+				<Basic/>
 			</div>
 		);
 	}
