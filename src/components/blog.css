@@ -35,3 +35,16 @@ h4{
 p{
 	text-align: left;
 }
+
+li{
+	margin: 10px;
+}
+
+li.pendingItem{
+	background-color: blue;
+}
+
+li.doneItem{
+	background-color: grey;
+	text-decoration: line-through;
+}
